@@ -215,4 +215,10 @@ Your homework will be evaluated based on:
 - 🎨 Code quality: Is the code well-organized, readable, and maintainable?
 - 📈 Progress: Are you improving based on previous feedback?
 
+## 📜 License
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 Happy coding! 💻✨
