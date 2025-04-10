@@ -31,8 +31,8 @@ The `deploy-website.yml` workflow automatically deploys all the homework submiss
 ### Accessing the Deployed Website
 
 Once deployed, the website will be available at:
-`https://{organization-name}.github.io/{repository-name}/`
+`https://tku-kampfportal.github.io/frontend-homework-submit/`
 
 The main index page provides links to all student submissions, organized by level and week.
 Each student's work is accessible at:
-`https://{organization-name}.github.io/{repository-name}/{level}/week-{x}/{name}/index.html`
+`https://tku-kampfportal.github.io/frontend-homework-submit/{level}/week-{x}/{name}/index.html`
