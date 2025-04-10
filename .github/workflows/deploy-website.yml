@@ -1,0 +1,83 @@
+name: Deploy Website
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# Add these permissions
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: |
+          npm install -g http-server
+
+      - name: Build website structure
+        run: |
+          mkdir -p dist
+
+          # Copy all HTML files while preserving directory structure
+          find . -type f -name "*.html" | grep -v "node_modules" | grep -v "dist" | while read file; do
+            # Extract the path structure: level/week/name/index.html
+            if [[ $file =~ ./(beginner|intermediate|advanced|mastery)/week-[^/]+/[^/]+/index.html ]]; then
+              dir=$(dirname "$file")
+              mkdir -p dist/$dir
+              cp "$file" dist/$dir/
+              echo "Copied $file to dist/$dir/"
+              
+              # Copy any assets that might be used by the HTML file
+              if [ -d "$dir/assets" ]; then
+                mkdir -p dist/$dir/assets
+                cp -r "$dir/assets/"* dist/$dir/assets/
+                echo "Copied assets from $dir/assets/ to dist/$dir/assets/"
+              fi
+            fi
+          done
+
+          # Create an index page that links to all submissions
+          echo "<!DOCTYPE html><html><head><title>Frontend Training Homework</title><style>
+          body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+          h1 { color: #333; }
+          ul { list-style-type: none; padding: 0; }
+          li { margin-bottom: 10px; }
+          a { color: #0066cc; text-decoration: none; }
+          a:hover { text-decoration: underline; }
+          .level { margin-top: 30px; }
+          </style></head><body><h1>Frontend Training Homework Submissions</h1>" > dist/index.html
+
+          for level in beginner intermediate advanced mastery; do
+            if [ -d "$level" ]; then
+              echo "<div class='level'><h2>${level^} Level</h2><ul>" >> dist/index.html
+              find "$level" -name "index.html" | sort | while read submission; do
+                if [[ $submission =~ $level/week-([^/]+)/([^/]+)/index.html ]]; then
+                  week=${BASH_REMATCH[1]}
+                  name=${BASH_REMATCH[2]}
+                  echo "<li><a href='$level/week-$week/$name/index.html'>$name - Week $week</a></li>" >> dist/index.html
+                fi
+              done
+              echo "</ul></div>" >> dist/index.html
+            fi
+          done
+
+          echo "</body></html>" >> dist/index.html
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          branch: gh-pages
