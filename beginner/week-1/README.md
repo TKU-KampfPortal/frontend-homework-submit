@@ -20,7 +20,7 @@ Create a simple todo list web page using **only HTML** (no CSS or JavaScript yet
 2. Include a title, headings, and appropriate semantic HTML elements
 3. Implement a todo list that visually resembles the example image below:
 
-![Todo List Example](./assets/images/todo-list.png)
+![Todo List Example](../../assets/images/todo-list.png)
 
 Your todo list should include:
 
