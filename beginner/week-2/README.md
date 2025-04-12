@@ -32,18 +32,6 @@ Your styled todo list should include:
 - Visual distinction between different types of tasks (completed vs active)
 - Responsive layout that works on different screen sizes
 
-### Required CSS Implementation
-
-- Create a separate `style.css` file for your CSS code
-- Link your CSS file to your HTML file using the `<link>` tag in the `<head>` section:
-  ```html
-  <link rel="stylesheet" href="style.css" />
-  ```
-- Use appropriate CSS selectors (class, ID, element)
-- Implement the box model correctly for spacing
-- Add comments to explain your CSS choices
-- Include at least one CSS animation or transition effect
-
 ### Additional Resources
 
 For more information about this assignment, please refer to the Confluence page:
@@ -52,10 +40,16 @@ For more information about this assignment, please refer to the Confluence page:
 ## 📤 Submission Guidelines
 
 1. Create a folder with your name in the `beginner/week-2/` directory
-2. Add your HTML and CSS files to this folder
-3. Include a brief README.md describing your approach and any challenges you faced
-4. Submit your work following the git workflow described in the main README
-5. Remember to submit at least ONE DAY BEFORE our next session
+2. Copy your `index.html` file from your week-1 submission to your "name" folder
+3. Create a new file named `style.css` in the same folder as your HTML file
+4. Link your CSS file to your HTML file using the `<link>` tag in the `<head>` section:
+
+```html
+<link rel="stylesheet" href="style.css" />
+```
+
+5. Use appropriate CSS selectors (class, ID, element)
+6. Submit your work following the git workflow described in the main README
 
 ## 🌟 Evaluation Criteria
 
