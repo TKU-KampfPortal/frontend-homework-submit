@@ -34,16 +34,6 @@ Your styled todo list should include:
 
 ### Required CSS Implementation
 
-- Create a separate `style.css` file for your CSS code
-- Link your CSS file to your HTML file using the `<link>` tag in the `<head>` section:
-  ```html
-  <link rel="stylesheet" href="style.css" />
-  ```
-- Use appropriate CSS selectors (class, ID, element)
-- Implement the box model correctly for spacing
-- Add comments to explain your CSS choices
-- Include at least one CSS animation or transition effect
-
 ### Additional Resources
 
 For more information about this assignment, please refer to the Confluence page:
