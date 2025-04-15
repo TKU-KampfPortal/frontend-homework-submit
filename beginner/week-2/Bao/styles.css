@@ -222,8 +222,9 @@ body {
 }
 
 .add-button:hover {
-    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.86);
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.8);
     filter: brightness(1.1);
+    transform: scale(1.05);
     transition: all 0.3s ease;
 }
 
