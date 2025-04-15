@@ -50,7 +50,7 @@ body {
     background-image: conic-gradient(from var(--angle),transparent, transparent, #b9dcff, transparent, transparent, transparent, #ffd6c7, transparent, transparent);
     z-index: 0;
     border-radius: 15px;
-    animation: 10s spin linear infinite;
+    animation: 12s spin linear infinite;
     filter: blur(2px);
     padding: 5px;
     pointer-events: none;
@@ -76,7 +76,7 @@ body {
     z-index: -1;
     padding: 10px;
     border-radius: 15px;
-    animation: 10s spin linear infinite;
+    animation: 12s spin linear infinite;
     filter: blur(2rem);
     opacity: 0.8;
 }
