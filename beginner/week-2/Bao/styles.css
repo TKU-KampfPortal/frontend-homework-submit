@@ -6,6 +6,8 @@
     --text-color: #FFFFFF;
     --sub-text-color: rgba(166, 166, 166, 0.6);
     --checkbox-color: #2A2B2D;
+    --animate-red: #FF002F;
+    --animate-blue: #0073FF;
 }
 
 html {
@@ -15,17 +17,74 @@ html {
 
 body {
     background-color: var(--background);
-    box-sizing: border-box;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+}
+
+.logo-section {
+    position: relative;
+    margin: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    animation: logo-zoom 5s infinite ease-in-out;
+}
+
+@keyframes logo-zoom {
+    0%, 100% {
+        transform: scale(1);
+        filter: brightness(1) drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
+    }
+    50% {
+        transform: scale(1.05);
+        filter: brightness(1.2) drop-shadow(0 0 25px rgba(255, 255, 255, 0.8));
+    }
+}
+
+.logo::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+    z-index: -1;
+    border-radius: 50%;
+    animation: glow-pulse 3s infinite ease-in-out;
+}
+
+@keyframes glow-pulse {
+    0%, 100% {
+        width: 100%;
+        height: 10%;
+        opacity: 0.1;
+        background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(0,120,255,0.05) 50%, rgba(255,255,255,0) 70%);
+    }
+    50% {
+        width: 110%;
+        height: 110%;
+        opacity: 0.2;
+        background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, rgba(0,150,255,0.08) 50%, rgba(255,255,255,0) 70%);
+    }
 }
 
 @property --angle{
     syntax: "<angle>";
-    initial-value: 0deg;
+    initial-value: 30deg;
     inherits: false;
 }
 
@@ -47,13 +106,14 @@ body {
     content: '';
     position: absolute;
     inset: -5px;
-    background-image: conic-gradient(from var(--angle),transparent, transparent, #b9dcff, transparent, transparent, transparent, #ffd6c7, transparent, transparent);
+    background-image: conic-gradient(from var(--angle),transparent, transparent, #b9dcff, transparent, transparent, transparent, #ffd6c7, transparent, transparent); 
     z-index: 0;
     border-radius: 15px;
-    animation: 12s spin linear infinite;
     filter: blur(2px);
     padding: 5px;
     pointer-events: none;
+    animation: 12s spin linear infinite;
+    animation-play-state: running;
 }
 
 .todo-container::after {
@@ -72,13 +132,19 @@ body {
     position: absolute;
     height: 100%;
     width: 100%;
-    background-image: conic-gradient(from var(--angle), transparent, transparent, #006aff, #006aff, transparent, transparent, transparent, #ff4800, #ff4800, transparent, transparent);
     z-index: -1;
-    padding: 10px;
+    padding: 6px;
     border-radius: 15px;
-    animation: 12s spin linear infinite;
-    filter: blur(2rem);
+    background-image: conic-gradient(from var(--angle), transparent, transparent, var(--animate-blue), var(--animate-blue), transparent, transparent, transparent,var(--animate-red), var(--animate-red), transparent, transparent);
+    filter: blur(5px);
     opacity: 0.8;
+    animation: 12s spin linear infinite;
+    animation-play-state: running;
+    mix-blend-mode: lighten;
+}
+
+.todo-container:hover::before, .todo-container:hover::after {
+    animation-play-state: paused;
 }
 
 @keyframes spin{
@@ -142,10 +208,6 @@ body {
     margin-right: 1vw;
 }
 
-.task-input:focus {
-    outline: none;
-}
-
 .add-button {
     background-color: white;
     color: black;
@@ -187,6 +249,16 @@ body {
     border-color: var(--accent-color);
     border-width: 1px;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.status-button:hover {
+    border-color: white;
+    border-width: 2px;
+    transform: scale(1.02);
+    color: var(--text-color);
+    filter: brightness(1.1);
+    transition: all 0.3s ease;
 }
 
 ul {
@@ -230,19 +302,20 @@ ul {
 
 .edit-button svg, .delete-button svg {
     fill: var(--accent-color);
+    background: none;
     width: 20px;
     height: 20px;
     transition: all 0.3s ease;
 }
 
 .edit-button:hover svg {
-    fill: #1fa9ff;
+    fill: var(--animate-blue);
     transform: scale(1.1);
     transition: all 0.3s ease;
 }
 
 .delete-button:hover svg {
-    fill: #ff2853;
+    fill: var(--animate-red);
     transform: scale(1.1);
     transition: all 0.3s ease;
 }
