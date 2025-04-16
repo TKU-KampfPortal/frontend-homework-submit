@@ -103,7 +103,7 @@ body {
     position: absolute;
     height: 100%;
     width: 100%;
-    z-index: -1;
+    z-index: -2;
     padding: 10px;
     border-radius: 15px;
     background-image: conic-gradient(from var(--angle), transparent, transparent, var(--animate-blue), var(--animate-blue), transparent, transparent, transparent,var(--animate-red), var(--animate-red), transparent, transparent);
@@ -147,10 +147,24 @@ body {
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
     mask-composite: exclude;
+
+    /* Webkit implementation */
     -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
     -webkit-mask-composite: destination-out;
+
+    /* Firefox implementation */
+    -moz-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -moz-mask-composite: subtract;
+    
+    /* Edge/IE implementation */
+    -ms-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -ms-mask-composite: subtract;
 }
 
 .todo-container::before {
