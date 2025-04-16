@@ -3,10 +3,12 @@
     --primary-color: #0B0D10;
     --secondary-color: #18191B;
     --accent-color: #4F5257;
+    --red-accent: #FF0033;
+    --blue-accent: #0091FF;
     --text-color: #FFFFFF;
     --sub-text-color: rgba(166, 166, 166, 0.6);
     --checkbox-color: #2A2B2D;
-    --animate-red: #FF3700;
+    --animate-red: #FF5000;
     --animate-blue: #0073FF;
 }
 
@@ -88,6 +90,30 @@ body {
     inherits: false;
 }
 
+.todo-container-wrapper {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.todo-container-wrapper::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    padding: 10px;
+    border-radius: 15px;
+    background-image: conic-gradient(from var(--angle), transparent, transparent, var(--animate-blue), var(--animate-blue), transparent, transparent, transparent,var(--animate-red), var(--animate-red), transparent, transparent);
+    filter: blur(1.5rem);
+    opacity: 0.8;
+    animation: 12s spin linear infinite;
+    animation-play-state: running;
+    mix-blend-mode: lighten;
+}
+
 .todo-container {
     background-color: var(--primary-color);
     position: relative;
@@ -136,14 +162,15 @@ body {
     padding: 8px;
     border-radius: 15px;
     background-image: conic-gradient(from var(--angle), transparent, transparent, var(--animate-blue), var(--animate-blue), transparent, transparent, transparent,var(--animate-red), var(--animate-red), transparent, transparent);
-    filter: blur(1rem);
-    opacity: 0.8;
+    filter: blur(3px);
     animation: 12s spin linear infinite;
     animation-play-state: running;
     mix-blend-mode: lighten;
 }
 
-.todo-container:hover::before, .todo-container:hover::after {
+.todo-container:hover::before,
+.todo-container:hover::after,
+.todo-container-wrapper:hover::before {
     animation-play-state: paused;
 }
 
@@ -206,6 +233,10 @@ body {
     border: none;
     padding-left: 10px;
     margin-right: 1vw;
+}
+
+.task-input:focus {
+    outline: none;
 }
 
 .add-button {
@@ -310,13 +341,13 @@ ul {
 }
 
 .edit-button:hover svg {
-    fill: var(--animate-blue);
+    fill: var(--blue-accent);
     transform: scale(1.1);
     transition: all 0.3s ease;
 }
 
 .delete-button:hover svg {
-    fill: var(--animate-red);
+    fill: var(--red-accent);
     transform: scale(1.1);
     transition: all 0.3s ease;
 }
