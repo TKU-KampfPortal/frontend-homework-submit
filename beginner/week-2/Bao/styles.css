@@ -132,7 +132,7 @@ body {
     content: '';
     position: absolute;
     inset: -5px;
-    background-image: conic-gradient(from var(--angle),transparent, transparent, #b9dcff, transparent, transparent, transparent, #ffd6c7, transparent, transparent); 
+    background-image: conic-gradient(from var(--angle),transparent, transparent, white, transparent, transparent, transparent, white, transparent, transparent); 
     z-index: 0;
     border-radius: 15px;
     filter: blur(2px);
