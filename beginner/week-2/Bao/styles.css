@@ -243,10 +243,14 @@ body {
     border: none;
     padding-left: 10px;
     margin-right: 1vw;
+    transition: all 0.3 ease;
 }
 
 .task-input:focus {
     outline: none;
+    background-color: var(--checkbox-color);
+    filter: brightness(0.8);
+    transition: all 0.3 ease;
 }
 
 .add-button {
