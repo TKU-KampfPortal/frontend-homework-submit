@@ -104,14 +104,11 @@ body {
     height: 100%;
     width: 100%;
     z-index: -2;
-    padding: 10px;
-    border-radius: 15px;
+    border-radius: 20px;
     background-image: conic-gradient(from var(--angle), transparent, transparent, var(--animate-blue), var(--animate-blue), transparent, transparent, transparent,var(--animate-red), var(--animate-red), transparent, transparent);
-    filter: blur(1.5rem);
-    opacity: 0.8;
+    filter: blur(2rem);
     animation: 12s spin linear infinite;
     animation-play-state: running;
-    mix-blend-mode: lighten;
 }
 
 .todo-container {
@@ -131,10 +128,10 @@ body {
 .todo-container::after {
     content: '';
     position: absolute;
-    inset: -5px;
+    inset: -6px;
     background-image: conic-gradient(from var(--angle),transparent, transparent, white, transparent, transparent, transparent, white, transparent, transparent); 
     z-index: 0;
-    border-radius: 15px;
+    border-radius: 20px;
     filter: blur(2px);
     padding: 6px;
     pointer-events: none;
@@ -174,7 +171,7 @@ body {
     width: 100%;
     z-index: -1;
     padding: 8px;
-    border-radius: 15px;
+    border-radius: 20px;
     background-image: conic-gradient(from var(--angle), transparent, transparent, var(--animate-blue), var(--animate-blue), transparent, transparent, transparent,var(--animate-red), var(--animate-red), transparent, transparent);
     filter: blur(3px);
     animation: 12s spin linear infinite;
