@@ -176,7 +176,6 @@ body {
     filter: blur(3px);
     animation: 12s spin linear infinite;
     animation-play-state: running;
-    mix-blend-mode: lighten;
 }
 
 .todo-container:hover::before,
