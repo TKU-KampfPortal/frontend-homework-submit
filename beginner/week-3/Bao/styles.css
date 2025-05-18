@@ -1,0 +1,477 @@
+:root {
+    --background: #121212;
+    --primary-color: #0B0D10;
+    --secondary-color: #18191B;
+    --accent-color: #4F5257;
+    --accent-color1: #232426;
+    --red-accent: #FF0033;
+    --blue-accent: #0091FF;
+    --text-color: #FFFFFF;
+    --sub-text-color: rgba(166, 166, 166, 0.6);
+    --animate-red: #FF5000;
+    --animate-blue: #0073FF;
+}
+
+html {
+    font-family: Inter, sans-serif;
+    color: var(--text-color);
+}
+
+body {
+    background-color: var(--background);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+}
+
+.logo-section {
+    position: relative;
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 30deg;
+    inherits: false;
+}
+
+.todo-container-wrapper {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.todo-container-wrapper::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -2;
+    border-radius: 20px;
+    background-image: conic-gradient(from var(--angle), transparent, transparent, var(--animate-blue), var(--animate-blue), transparent, transparent, transparent,var(--animate-red), var(--animate-red), transparent, transparent);
+    filter: blur(2rem);
+    animation: 12s spin linear infinite;
+    animation-play-state: running;
+}
+
+.todo-container {
+    background-color: var(--primary-color);
+    position: relative;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    border-style: solid;
+    border-color: var(--accent-color);
+    border-width: 3px;
+}
+
+.todo-container::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    background-image: conic-gradient(from var(--angle),transparent, transparent, white, transparent, transparent, transparent, white, transparent, transparent); 
+    z-index: 0;
+    border-radius: 20px;
+    filter: blur(2px);
+    padding: 6px;
+    pointer-events: none;
+    animation: 12s spin linear infinite;
+    animation-play-state: running;
+}
+
+.todo-container::after {
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+
+    /* Webkit implementation */
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+
+    /* Firefox implementation */
+    -moz-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -moz-mask-composite: subtract;
+    
+    /* Edge/IE implementation */
+    -ms-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -ms-mask-composite: subtract;
+}
+
+.todo-container::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    padding: 8px;
+    border-radius: 20px;
+    background-image: conic-gradient(from var(--angle), transparent, transparent, var(--animate-blue), var(--animate-blue), transparent, transparent, transparent,var(--animate-red), var(--animate-red), transparent, transparent);
+    filter: blur(3px);
+    animation: 12s spin linear infinite;
+    animation-play-state: running;
+}
+
+.todo-container:hover::before,
+.todo-container:hover::after,
+.todo-container-wrapper:hover::before {
+    animation-play-state: paused;
+}
+
+@keyframes spin{
+    0% {
+        --angle: 30deg;
+    }
+    42.5% {
+        --angle: 90deg;
+    }
+    50% {
+        --angle: 220deg;
+    }
+    92.5% {
+        --angle: 270deg;
+    }
+    100% {
+        --angle: 390deg;
+    }
+}
+
+.todo-container-header, .todo-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-container-header label {
+    margin-top: -10px;
+    color: #d0d0d0;
+}
+
+.todo-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 38vw;
+    min-width: 320px;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    margin-bottom: 2vh;
+}
+
+.task-input {
+    background-color: var(--secondary-color);
+    color: white;
+    flex-grow: 1;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    padding-left: 10px;
+    margin-right: 1vw;
+    transition: all 0.3 ease;
+}
+
+.task-input:focus {
+    outline: none;
+    background-color: var(--accent-color1);
+    filter: brightness(0.8);
+    transition: all 0.3 ease;
+}
+
+.add-button {
+    background-color: white;
+    color: black;
+    font-size: 2rem;
+    line-height: 100%;
+    min-width: 38px;
+    height: 38px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.add-button:hover {
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.8);
+    filter: brightness(1.1);
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+.filter {
+    background-color: var(--accent-color1);
+    border-radius: 5px;
+    padding: 6px 0 6px 0;
+    display: flex;
+    flex-direction: row;
+    width: 38vw;
+    min-width: 320px;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: inset 0 0 6px 1px rgba(0, 0, 0, 0.5);
+}
+
+.filter-button {
+    background-color: transparent;
+    color: #a6a6a6;
+    font-size: 1rem;
+    line-height: 100%;
+    width: 31%;
+    height: 32px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-button:hover {
+    transform: scale(1.02);
+    color: var(--text-color);
+    filter: brightness(1.1);
+    transition: all 0.3s ease;
+}
+
+.filter-button.active {
+    color: black;
+    background-color: #fff;
+    box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.no-tasks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vh;
+    margin-bottom: 2vh;
+}
+
+.no-tasks svg {
+    fill: none;
+    stroke: var(--accent-color1);
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.no-tasks-yet {
+    font-size: 1.5rem;
+}
+
+.no-tasks-text {
+    color: var(--sub-text-color);
+    font-family: 'Inter', sans-serif;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 2vh 0;
+    width: 38vw;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.todo {
+    background-color: var(--primary-color);
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-bottom-style: solid;
+    border-bottom-color: var(--accent-color);
+    border-width: 1px;
+    transition: all 0.3s ease;
+}
+
+@keyframes todoAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes todoDisappear {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+        max-height: 100px;
+    }
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+        max-height: 0;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+.todo-appear {
+    animation: todoAppear 0.3s ease forwards;
+}
+
+.todo-disappear {
+    animation: todoDisappear 0.3s ease forwards;
+}
+
+.todo .todo-text {
+    padding: 20px 0;
+    flex-grow: 1;
+}
+
+.edit-button, .delete-button {
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 1vw;
+}
+
+.edit-button svg, .delete-button svg {
+    fill: var(--accent-color);
+    background: none;
+    width: 20px;
+    height: 20px;
+    transition: all 0.3s ease;
+}
+
+.edit-button:hover svg {
+    fill: var(--blue-accent);
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+.delete-button:hover svg {
+    fill: var(--red-accent);
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+.custom-checkbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--accent-color1);
+    margin-right: 1vw;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.custom-checkbox svg {
+    fill: transparent;
+    transform: scale(0.8);
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+input[type="checkbox"]:checked ~ .custom-checkbox {
+    background-color: white;
+}
+input[type="checkbox"]:checked ~ .custom-checkbox svg {
+    fill: var(--accent-color1);
+}
+input[type="checkbox"]:checked ~ .todo-text {
+    text-decoration: line-through;
+    color: var(--sub-text-color);
+    transition: all 0.15s ease;
+}
+
+.todo-container-footer {
+    display: flex;
+    flex-direction: row;
+    margin: 2vh 0 5vh 0;
+    width: 38vw;
+    min-width: 320px;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--sub-text-color);
+}
+
+.todo-container-footer label {
+    flex-grow: 1;
+}
+
+.clear-button {
+    background: none;
+    border: none;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.clear-button:hover {
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.edit-input {
+    background-color: var(--accent-color1);
+    color: var(--text-color);
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    flex-grow: 1;
+    font-size: inherit;
+    outline: none;
+    margin: 12px 0;
+}
+
+.edit-input:focus {
+    box-shadow: 0 0 0 2px white;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <span class="logo-section">
+        <img class="logo" src="assets/tku.webp" alt="TKU Logo">
+    </span>
+    <div class="todo-container-wrapper">
+        <div class="todo-container">
+            <div class="todo-container-header">
+                <h1>Todo List</h1>
+                <label for="todo">Keep track of your tasks</label>
+            </div>
+            <div class="todo-form-container">
+                <form class="todo-form">
+                    <br>
+                    <div class="input-container">
+                        <input class="task-input" type="text" id="todo-input" placeholder="Add a new task..." required autocomplete="off">
+                        <button class="add-button" type="submit" id="submit">+</button>
+                    </div>
+                    <div class="filter">
+                        <button class="filter-button" id="showAll">All</button>
+                        <button class="filter-button" id="showActive">Active</button>
+                        <button class="filter-button" id="showCompleted">Completed</button>
+                    </div>
+                </form><br>
+                <div class="no-tasks">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
+                    <p class="no-tasks-text no-tasks-yet">No tasks yet</p>
+                    <p class="no-tasks-text add-new-task">Add a new task to get started</p>
+                </div>
+                <ul id="todo-list">
+                    <!-- <li class="todo">
+                        <input type="checkbox" id="todo1">
+                        <label class="custom-checkbox" for="todo1">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                                <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/>
+                            </svg>
+                        </label>
+                        <label class="todo-text" for="todo1">
+                            Complete project proposal
+                        </label>
+                        <button class="edit-button">
+                            <svg class="edit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.8 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"/>
+                            </svg>
+                        </button>
+                        <button class="delete-button">
+                            <svg class="delete" viewBox="-32 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"/>
+                            </svg>
+                        </button>
+                    </li> -->
+                </ul>
+            </div>
+            <div class="todo-container-footer">
+                <label>0 items left</label>
+                <button class="clear-button" id="clearCompleted">Clear Completed</button>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
