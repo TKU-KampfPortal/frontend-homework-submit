@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task checking</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>  
+    <div class="container">
+        <div class="header">
+            <div class = "logo-wrapper">
+                <div class="logo-wrapper-2">
+                    <img src="https://i.postimg.cc/W13TTd2p/TKULogo.png" class="logo">
+                </div>
+            </div>
+            <h1>TO-DO LIST</h1>
+        </div>
+        <div class="sentence">
+            <p>Keep track of your task👍</p>
+        </div>
+
+        <div class="filter-row">
+            <button class="filter_button" data-type="all">All</button>
+            <button class="filter_button" data-type="completed">Completed</button>
+            <button class="filter_button" data-type="active">Active</button>
+        </div>
+
+        <div class="input-row">
+            <input type="text" id="taskInput" placeholder="Add a new task...">
+            <button onclick="addTask()" class="add_button">+</button>
+        </div>
+
+        <div class="task-container">
+            <div id="taskList"></div>
+        </div>
+
+        <div class="sentence">
+            <p><span id="itemsLeft">0</span> tasks left</p>
+        </div>
+
+        <div class="row">
+            <button class="button_delete_all">Clear completed</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
