@@ -3,21 +3,21 @@ let deletedTaskStack = [];
 const MAX_UNDO = 5;
 
 function addTask() {
-    var input = document.getElementById("taskInput")
-    var taskText = input.value;
+    let input = document.getElementById("taskInput")
+    let taskText = input.value;
 
     if (taskText.trim() === ""){
         return;
     }
 
-    var taskDiv = document.createElement("div");
+    let taskDiv = document.createElement("div");
     taskDiv.className = "task";
     taskDiv.setAttribute("data-completed", "false");
 
-    var taskSpan = document.createElement("span")
+    let taskSpan = document.createElement("span")
     taskSpan.innerHTML = taskText;
 
-    var checkIcon = document.createElement("i");
+    let checkIcon = document.createElement("i");
     checkIcon.className = "fa-solid fa-square-check";
     checkIcon.style.marginRight = "10px";
     checkIcon.style.cursor = "pointer";
@@ -31,7 +31,7 @@ function addTask() {
         saveTasksToLocalStorage();
     };
 
-    var trashIcon = document.createElement("i");
+    let trashIcon = document.createElement("i");
     trashIcon.className = "fas fa-trash";
 
     trashIcon.onclick = function(){
@@ -52,7 +52,7 @@ function addTask() {
         saveTasksToLocalStorage();
     };
 
-    var iconContainer = document.createElement("div");
+    let iconContainer = document.createElement("div");
     iconContainer.className = "icons";
     iconContainer.appendChild(checkIcon);
     iconContainer.appendChild(trashIcon);
@@ -60,7 +60,7 @@ function addTask() {
     taskDiv.appendChild(taskSpan);
     taskDiv.appendChild(iconContainer);
 
-    var taskList = document.getElementById("taskList");
+    let taskList = document.getElementById("taskList");
     taskList.appendChild(taskDiv)
     updateItemsLeft();
 
@@ -169,15 +169,15 @@ function saveTasksToLocalStorage() {
 window.onload = function () {
     const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
     savedTasks.forEach(task =>{
-        var taskDiv = document.createElement("div");
+        let taskDiv = document.createElement("div");
         taskDiv.className = "task";
         taskDiv.setAttribute("data-completed", task.completed ? "true" : "false");
         if (task.completed) taskDiv.classList.add("completed");
 
-        var taskSpan = document.createElement("span");
+        let taskSpan = document.createElement("span");
         taskSpan.innerHTML = task.text;
 
-        var checkIcon = document.createElement("i");
+        let checkIcon = document.createElement("i");
         checkIcon.className = "fa-solid fa-square-check";
         checkIcon.style.marginRight = "10px";
         checkIcon.style.cursor = "pointer";
@@ -191,7 +191,7 @@ window.onload = function () {
             saveTasksToLocalStorage();
         };
 
-        var trashIcon = document.createElement("i");
+        let trashIcon = document.createElement("i");
         trashIcon.className = "fas fa-trash";
         trashIcon.onclick = function () {
             const taskList = document.getElementById("taskList");
@@ -208,7 +208,7 @@ window.onload = function () {
             saveTasksToLocalStorage();
         };
 
-        var iconContainer = document.createElement("div");
+        let iconContainer = document.createElement("div");
         iconContainer.className = "icons";
         iconContainer.appendChild(checkIcon);
         iconContainer.appendChild(trashIcon);
