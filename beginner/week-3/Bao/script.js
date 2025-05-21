@@ -43,24 +43,26 @@ function addTask() {
 function updateTodoList() {
     const itemsLeft = todoTasks.length;
     todoList.innerHTML = "";
-    const filteredTasks = todoTasks.filter(task => {
-        if (currentFilter === 'All') return true;
-        if (currentFilter === 'Active') return !task.completed;
-        if (currentFilter === 'Completed') return task.completed;
-        return true;
-    });
-
+    
     // Show or hide the "No tasks yet" message based on whether there are any tasks
     if (itemsLeft === 0) {
         setTimeout(() => {
             noTasks.style.display = 'flex';
-        }, 500);
+        }, 200);
     } else {
         noTasks.style.display = 'none';
     }
 
-    filteredTasks.forEach((task, taskIndex) => {
+    todoTasks.forEach((task, taskIndex) => {
         const todoItem = createTodoItem(task, taskIndex);
+        
+        // Hide tasks based on filter
+        if (currentFilter === 'Active' && task.completed) {
+            todoItem.style.display = 'none';
+        } else if (currentFilter === 'Completed' && !task.completed) {
+            todoItem.style.display = 'none';
+        }
+        
         todoList.append(todoItem);
     });
 
