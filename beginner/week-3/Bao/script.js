@@ -152,7 +152,7 @@ function editTask(task, todoTextLabel) {
             cancelEdit();
         }
     });
-    editInput.addEventListener('blur', saveEdit());
+    editInput.addEventListener('blur', saveEdit);
     
     function saveEdit() {
         const newValue = editInput.value.trim();
